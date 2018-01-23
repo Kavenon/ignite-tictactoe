@@ -1,4 +1,4 @@
-package pl.edu.agh.student;
+package pl.edu.agh.student.run;
 
 import org.apache.ignite.Ignition;
 import org.apache.ignite.configuration.IgniteConfiguration;

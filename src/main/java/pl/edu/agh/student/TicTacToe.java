@@ -1,5 +1,8 @@
 package pl.edu.agh.student;
 
+import pl.edu.agh.student.model.GameState;
+import pl.edu.agh.student.model.Node;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

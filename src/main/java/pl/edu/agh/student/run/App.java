@@ -1,9 +1,11 @@
-package pl.edu.agh.student;
+package pl.edu.agh.student.run;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCompute;
 import org.apache.ignite.Ignition;
 import org.apache.ignite.configuration.IgniteConfiguration;
+import pl.edu.agh.student.model.GameState;
+import pl.edu.agh.student.TicTacToeTask;
 
 public class App {
 

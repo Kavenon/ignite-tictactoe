@@ -3,12 +3,13 @@ package pl.edu.agh.student;
 import org.apache.ignite.compute.*;
 import org.apache.ignite.resources.TaskSessionResource;
 import org.jetbrains.annotations.Nullable;
+import pl.edu.agh.student.model.GameState;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-class TicTacToeTask extends ComputeTaskSplitAdapter<GameState, Double> {
+public class TicTacToeTask extends ComputeTaskSplitAdapter<GameState, Double> {
 
     private final static int PLAYER_TO_CHECK = 1;
 
