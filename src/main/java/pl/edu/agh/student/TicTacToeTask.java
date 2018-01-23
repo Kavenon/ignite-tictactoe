@@ -29,11 +29,15 @@ public class TicTacToeTask extends ComputeTaskSplitAdapter<GameState, Double> {
                 @Nullable
                 @Override
                 public Object execute() {
-                    System.out.println();
-                    System.out.println(">>> Printing on this node from ignite job." + ses.getTaskNodeId());
 
                     TicTacToe ticTacToeInsideTask = new TicTacToe(nextState);
-                    return ticTacToeInsideTask.getProbability(PLAYER_TO_CHECK);
+                    Double probability = ticTacToeInsideTask.getProbability(PLAYER_TO_CHECK);
+
+                    System.out.println();
+                    System.out.println(">>> Printing on this node from ignite job." + ses.getTaskNodeId());
+                    System.out.println(">>> RESULT: " + probability);
+
+                    return probability;
                 }
             });
         }
@@ -44,11 +48,9 @@ public class TicTacToeTask extends ComputeTaskSplitAdapter<GameState, Double> {
     @Nullable
     @Override
     public Double reduce(List<ComputeJobResult> results) {
-        int sum = 0;
-
+        double sum = 0;
         for (ComputeJobResult res : results)
             sum += res.<Double>getData();
-
-        return (double) sum / results.size();
+        return sum / results.size();
     }
 }

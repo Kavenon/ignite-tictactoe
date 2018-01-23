@@ -10,9 +10,8 @@ import java.util.List;
 public class TicTacToe {
 
 	private GameState state;
-	
-	static int winX_Counter = 0;
-	static int winY_Counter = 0;
+	private int winX_Counter = 0;
+	private int winY_Counter = 0;
 
 	public TicTacToe(GameState state) {
 		this.state = state;
@@ -20,7 +19,7 @@ public class TicTacToe {
 
 	public List<GameState> getNextStates(){
     	
-    	List<GameState> gameStates = new ArrayList<GameState>();
+    	List<GameState> gameStates = new ArrayList<>();
     	
     	for (int i = 0; i < state.getSize(); i++) {
 			int[] tempData = Arrays.copyOf(state.getState(), state.getSize());
@@ -38,7 +37,7 @@ public class TicTacToe {
 		generateTree(root, state.getNextMove());
 	}
 	
-	private static void generateTree(Node<int[]> parent, int nextPlayer) {
+	private void generateTree(Node<int[]> parent, int nextPlayer) {
 
 		Node<int[]> childNode;
 
@@ -63,22 +62,22 @@ public class TicTacToe {
 
 	}
 	
-	private static int getNextPlayer(int currentPlayer) {
+	private int getNextPlayer(int currentPlayer) {
 		return currentPlayer == 1 ? 2 : 1;
 	}
 
 	public Double getProbability(int player) {
 		countProbability();
-		
+
 		if (player == 1)
-			return (double) (winX_Counter / (winX_Counter+winY_Counter));
+			return (double) winX_Counter / (winX_Counter+winY_Counter);
 		else if (player == 2)
-			return (double) (winY_Counter / (winX_Counter+winY_Counter));
+			return (double)winY_Counter / (winX_Counter+winY_Counter);
 		else 
 			return 0.0;
 	}
-	
-	public static int isGameOver(int[] vector) {
+
+	private int isGameOver(int[] vector) {
 
 		int matrixSize = (int) Math.sqrt(vector.length);
 		int[][] gameState = new int[matrixSize][matrixSize];
