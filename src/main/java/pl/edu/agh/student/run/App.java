@@ -34,9 +34,11 @@ public class App {
         GameState initialGameState = new GameState(initialState, initialState.length, 1);
 
         // ======= Run
+        long start = System.currentTimeMillis();
         Double cnt = compute.execute(TicTacToeTask.class, initialGameState);
 
         System.out.println("Result: " + cnt);
+        System.out.println("Time: " + (System.currentTimeMillis()-start));
 
         // ======= Close client
         client.close();
